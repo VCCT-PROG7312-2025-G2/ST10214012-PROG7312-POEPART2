@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "View Reports";
+    var reports = ViewBag.Reports as LinkedList<TESTER.Models.ReportModel>;
+}
+
+<h2 style="text-align:center; margin-bottom:30px;">Submitted Reports</h2>
+
+<div style="max-width:800px; margin:0 auto;">
+    @if (reports != null && reports.Any())
+    {
+        var currentNode = reports.First;
+        while (currentNode != null)
+        {
+            var report = currentNode.Value;
+            <div style="border:1px solid #ccc; border-radius:10px; padding:15px; margin-bottom:20px; box-shadow:0 5px 10px rgba(0,0,0,0.1);">
+                <p><strong>Location:</strong> @report.Location</p>
+                <p><strong>Category:</strong> @report.Category</p>
+                <p><strong>Description:</strong> @report.Description</p>
+                <p><strong>Submitted At:</strong> @report.SubmittedAt.ToString("g")</p>
+
+                @if (!string.IsNullOrEmpty(report.MediaPath))
+                {
+                    <div style="margin-top:10px;">
+                        <strong>Media Attachment:</strong><br />
+                        <img src="@report.MediaPath" alt="Media" style="max-width:100%; height:auto; border-radius:5px;" />
+                    </div>
+                }
+            </div>
+
+            currentNode = currentNode.Next;
+        }
+    }
+    else
+    {
+        <p style="text-align:center;">No reports submitted yet.</p>
+    }
+
+    <div style="text-align:center; margin-top:30px;">
+        <a href="@Url.Action("AddReports", "Home")" style="padding:10px 20px; background-color:#4CAF50; color:white; text-decoration:none; border-radius:5px;">Add New Report</a>
+        <a href="@Url.Action("Index", "Home")" style="padding:10px 20px; background-color:#f44336; color:white; text-decoration:none; border-radius:5px; margin-left:10px;">Back to Main Menu</a>
+    </div>
+</div>

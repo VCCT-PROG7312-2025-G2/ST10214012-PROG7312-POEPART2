@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Fake coat of arms centered-->
+<div style="text-align:center; margin-bottom:40px;">
+    <img src="~/designimages/fake coat of arms.png"
+         alt="Coat of Arms"
+         style="width:100px; height:auto;" />
+</div>
+
+<h2 style="text-align:center; margin-bottom:40px;">Click an image to go to the page</h2>
+
+<div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:0 20px;">
+
+    <!-- Add Reports -->
+    <div style="text-align:center;">
+        <a href="@Url.Action("AddReports", "Home")" style="text-decoration:none; display:block;">
+            <img src="~/designimages/report pic for prog.jpeg"
+                 alt="Add Reports"
+                 style="width:220px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); cursor:pointer;" />
+            <h3 style="margin-top:10px; color:#333;">Add Reports</h3>
+        </a>
+    </div>
+
+    <!-- Events and Announcements -->
+    <div style="text-align:center;">
+        <a href="@Url.Action("LocalEvents", "Home")" style="text-decoration:none; display:block;">
+            <img src="~/designimages/events and announcements.png"
+                 alt="Events and Announcements"
+                 style="width:220px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); cursor:pointer;" />
+            <h3 style="margin-top:10px; color:#333;">Events & Announcements</h3>
+        </a>
+    </div>
+
+    <!-- Service Requests -->
+    <div style="text-align:center;">
+        <div style="display:block;">
+            <img src="~/designimages/service request.png"
+                 alt="Service Requests"
+                 style="width:220px; height:200px; object-fit:cover; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2);" />
+            <h3 style="margin-top:10px; color:#333;">Service Requests</h3>
+        </div>
+        <p style="margin-top:5px; color:#777;">to be implemented later</p>
+    </div>
+</div>
+
+<!-- social media section -->
+<div style="text-align:center; margin-top:50px;">
+    <h3 style="margin-bottom:20px; color:#333;">Follow Us On Social Media:</h3>
+    <div style="display:flex; justify-content:center; gap:20px;">
+        <a href="https://www.instagram.com/" target="_blank" style="text-decoration:none; color:#E1306C; font-size:24px;">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color:#1877F2; font-size:24px;">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.twitter.com/" target="_blank" style="text-decoration:none; color:#1DA1F2; font-size:24px;">
+            <i class="fab fa-twitter"></i> Twitter
+        </a>
+    </div>
+</div>

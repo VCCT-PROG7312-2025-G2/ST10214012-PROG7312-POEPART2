@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Add Reports";
+}
+
+<h2 style="text-align:center; margin-bottom:30px;">Add a New Report</h2>
+
+<div style="max-width:600px; margin:0 auto; padding:20px; border:1px solid #ccc; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+
+    <form id="reportForm" asp-action="AddReports" method="post" enctype="multipart/form-data">
+        <div style="margin-bottom:15px;">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" class="form-control" required style="width:100%; padding:8px; margin-top:5px;" />
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <label for="category">Category:</label>
+            <select id="category" name="category" class="form-control" required style="width:100%; padding:8px; margin-top:5px;">
+                <option value="">-- Select Category --</option>
+                <option>Roadwork</option>
+                <option>Electrical</option>
+                <option>Sanitation</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" class="form-control" required style="width:100%; padding:8px; margin-top:5px;"></textarea>
+        </div>
+
+        <div style="margin-bottom:15px;">
+            <label for="media">Attach Media:</label>
+            <input type="file" id="media" name="media" class="form-control" style="margin-top:5px;" />
+        </div>
+
+        <!-- Progress bar -->
+        <div id="progressWrapper" style="display:none; margin-top:20px;">
+            <div class="progress" style="height: 25px;">
+                <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated"
+                     role="progressbar" style="width: 0%">
+                    0%
+                </div>
+            </div>
+            <!-- Submit Message -->
+            <p id="encourageMsg" style="display:none; margin-top:10px; font-weight:bold; color:green; text-align:center;">
+                Report submitted successfully! Thank you for helping improve our community 💪
+            </p>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-top:20px;">
+            <button type="submit" style="padding:10px 20px; background-color:#4CAF50; color:white; border:none; border-radius:5px; cursor:pointer;">
+                Submit Report
+            </button>
+            <a href="@Url.Action("Index", "Home")" style="padding:10px 20px; background-color:#f44336; color:white; text-decoration:none; border-radius:5px; text-align:center; display:inline-block;">
+                Back to Main Menu
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("reportForm").addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+            let form = this;
+            let progressWrapper = document.getElementById("progressWrapper");
+            let progressBar = document.getElementById("progressBar");
+            let encourageMsg = document.getElementById("encourageMsg");
+
+            progressWrapper.style.display = "block";
+
+            let progress = 0;
+            let interval = setInterval(function () {
+                if (progress < 100) {
+                    progress += 5;
+                    progressBar.style.width = progress + "%";
+                    progressBar.innerText = progress + "%";
+                } else {
+                    clearInterval(interval);
+
+                 
+                    encourageMsg.style.display = "block";
+
+                   
+                    setTimeout(function () {
+                        form.submit();
+                    }, 1000);
+                }
+            }, 100);
+        });
+    </script>
+}

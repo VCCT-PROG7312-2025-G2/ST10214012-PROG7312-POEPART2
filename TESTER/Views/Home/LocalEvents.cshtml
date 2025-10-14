@@ -1,0 +1,75 @@
+﻿@model List<TESTER.Models.Event>
+@{
+    ViewBag.Title = "Events & Announcements";
+    var recommended = ViewBag.Recommended as List<TESTER.Models.Event> ?? new List<TESTER.Models.Event>();
+    var recent = ViewBag.Recent as List<TESTER.Models.Event> ?? new List<TESTER.Models.Event>();
+}
+
+<h2 style="text-align:center; margin-bottom:20px;">Events & Announcements</h2>
+
+<!-- Search Bar -->
+<form method="get" action="@Url.Action("LocalEvents", "Home")" style="text-align:center; margin-bottom:30px;">
+    <input type="text" name="search" placeholder="Search by category or date..."
+           style="padding:10px; width:280px; border:1px solid #ccc; border-radius:8px;" />
+    <button type="submit"
+            style="padding:10px 15px; border:none; border-radius:8px; background:#007BFF; color:white; cursor:pointer;">
+        Search
+    </button>
+</form>
+
+<!-- Recommended Events -->
+@if (recommended.Any())
+{
+    <h3 style="margin-top:30px; text-align:center;">⭐ Recommended for You</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; margin-top:20px;">
+        @foreach (var e in recommended)
+        {
+            <div style="border:1px solid #ddd; border-radius:12px; padding:15px; background:#fdfdfd;
+                        box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:transform .2s;">
+                <h4>@e.Title</h4>
+                <p><strong>Date:</strong> @e.Date.ToString("MMMM dd, yyyy")</p>
+                <p><strong>Category:</strong> @e.Category</p>
+                <a href="@Url.Action("ViewEvent", "Home", new { id = e.Id })"
+                   style="color:#007BFF; text-decoration:none;">View Details</a>
+            </div>
+        }
+    </div>
+}
+
+<!-- Recently Viewed -->
+@if (recent.Any())
+{
+    <h3 style="margin-top:40px; text-align:center;">🕘 Recently Viewed</h3>
+    <div style="display:flex; justify-content:center; gap:20px; margin-top:15px; flex-wrap:wrap;">
+        @foreach (var e in recent)
+        {
+            <div style="padding:10px 15px; border:1px solid #ddd; border-radius:8px; background:#f9f9f9;">
+                <strong>@e.Title</strong> <br />
+                <small>@e.Date.ToShortDateString() - @e.Category</small>
+            </div>
+        }
+    </div>
+}
+
+<!-- All Events -->
+<h3 style="margin-top:40px; text-align:center;">📅 All Events</h3>
+<div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; margin-top:20px;">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var e in Model)
+        {
+            <div style="border:1px solid #ddd; border-radius:12px; padding:15px; background:#fff;
+                        box-shadow:0 4px 8px rgba(0,0,0,0.1); transition:transform .2s;">
+                <h4>@e.Title</h4>
+                <p><strong>Date:</strong> @e.Date.ToString("MMMM dd, yyyy")</p>
+                <p><strong>Category:</strong> @e.Category</p>
+                <a href="@Url.Action("ViewEvent", "Home", new { id = e.Id })"
+                   style="color:#007BFF; text-decoration:none;">View Details</a>
+            </div>
+        }
+    }
+    else
+    {
+        <p style="text-align:center;">No events found.</p>
+    }
+</div>

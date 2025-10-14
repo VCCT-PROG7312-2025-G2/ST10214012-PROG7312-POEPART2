@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TESTER</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TESTER.styles.css" asp-append-version="true" />
+
+    <!-- Font Awesome for social icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        /* Custom navbar color */
+        .navbar-custom {
+            background-color: #1C47B5;
+        }
+
+            .navbar-custom .navbar-brand,
+            .navbar-custom .nav-link {
+                color: white !important;
+            }
+
+                .navbar-custom .nav-link:hover {
+                    color: #d0e0ff !important; /* light hover effect */
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-custom border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/designimages/fake coat of arms.png"
+                         alt="Coat of Arms"
+                         style="width:40px; height:auto; margin-right:10px;" />
+                    Municipality
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ViewReports">View Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="background-color:#f8f9fa; padding:1px 0; font-size:12px; color:#555;">
+        <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:5px;">
+            <!-- Left: Copyright -->
+            <div>&copy; 2025 -Municipality - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color:#555;">Privacy</a></div>
+
+            <!-- Center: Quick Links -->
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <a asp-area="" asp-controller="Home" asp-action="Index" style="color:#555; text-decoration:none;">Home</a>
+                <a asp-area="" asp-controller="Home" asp-action="AddReports" style="color:#555; text-decoration:none;">Add Reports</a>
+                <a asp-area="" asp-controller="Home" asp-action="EventsAnnouncements" style="color:#555; text-decoration:none;">Events</a>
+                <a asp-area="" asp-controller="Home" asp-action="ServiceRequests" style="color:#555; text-decoration:none;">Service Requests</a>
+            </div>
+
+            <!-- Right: Contact & Social Media -->
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <span>📞 (012) 345-6789 | ✉ info@municipality.gov.za</span>
+                <div style="display:flex; gap:6px;">
+                    <a href="https://www.facebook.com/" target="_blank" style="color:#1877F2; font-size:14px;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.twitter.com/" target="_blank" style="color:#1DA1F2; font-size:14px;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" style="color:#E1306C; font-size:14px;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model TESTER.Models.Event
+@{
+    ViewBag.Title = "Event Details";
+}
+
+<div style="max-width:600px; margin:40px auto; padding:25px; border:1px solid #ddd; border-radius:12px;
+            background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+    <h2 style="margin-bottom:15px;">@Model.Title</h2>
+    <p><strong>Date:</strong> @Model.Date.ToString("MMMM dd, yyyy")</p>
+    <p><strong>Category:</strong> @Model.Category</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+
+    <div style="margin-top:25px;">
+        <a href="@Url.Action("LocalEvents", "Home")"
+           style="padding:10px 15px; border-radius:8px; background:#007BFF; color:white; text-decoration:none;">
+            ⬅ Back to Events
+        </a>
+    </div>
+</div>
