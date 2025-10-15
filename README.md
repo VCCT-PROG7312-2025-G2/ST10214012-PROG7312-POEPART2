@@ -15,16 +15,25 @@ Once in the folder open the TESTER.solution:
 
 
 You will then be presented with the application as it will open, 
-<img width="2558" height="1363" alt="Application will open" src="https://github.com/user-attachments/assets/4dfdf18b-0c9d-45ae-b95a-0c9a232609e2" />
+
+
+<img width="2552" height="1312" alt="Opened App" src="https://github.com/user-attachments/assets/79b1e150-abbe-4605-aa09-cb950d26b11e" />
+
 
 Once open press on the green play button, it is circled on the screenshot
 
-<img width="2558" height="1363" alt="Application will open - Copy" src="https://github.com/user-attachments/assets/d9da2fc4-31a1-4249-ad0d-e03d45256eb7" />
+
+<img width="988" height="260" alt="Press Run button" src="https://github.com/user-attachments/assets/726e9d6a-365f-44e0-bf4f-538a73a40077" />
+
 
 When the application is loaded fully you will be presented with the hompage:
-<img width="2558" height="1267" alt="presented with this page" src="https://github.com/user-attachments/assets/76408f61-b9d6-49a1-beec-6b355db36b58" />
 
-Only add reports withh be functioning and the rest you wont be able to use as it is disabled, click on add reports:<img width="2558" height="1267" alt="presented with this page" src="https://github.com/user-attachments/assets/4b1434ae-bb55-4235-b212-900c384d9e20" />
+
+<img width="2555" height="1305" alt="Website Homepage" src="https://github.com/user-attachments/assets/d2863e5f-97ac-42dc-88d0-53b458516e89" />
+
+In this section add reports and Events is enabled, this section focuses on Local Events, click on L:
+
+<img width="2558" height="1305" alt="Local Events" src="https://github.com/user-attachments/assets/d5110f96-3751-4be4-bac3-23b0a873c155" />
 
 The add reports page will be displayed as this:
 <img width="2557" height="1265" alt="Adding new report" src="https://github.com/user-attachments/assets/67a4cdb8-1bd1-402d-ab05-7ea80f6e81d0" />
