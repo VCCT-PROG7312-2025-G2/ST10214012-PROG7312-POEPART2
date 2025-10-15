@@ -10,6 +10,7 @@ Once the folder is downloaded click into it.
 <img width="84" height="125" alt="Folder" src="https://github.com/user-attachments/assets/753f3982-312e-427b-9e96-9a606e740ea8" />
 
 Once in the folder open the TESTER.solution:
+
 <img width="614" height="30" alt="Solution File" src="https://github.com/user-attachments/assets/45551d14-ebf0-493e-8f6b-b8bbd351aade" />
 
 
