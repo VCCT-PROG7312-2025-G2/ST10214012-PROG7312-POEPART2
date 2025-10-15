@@ -31,11 +31,11 @@ When the application is loaded fully you will be presented with the hompage:
 
 <img width="2555" height="1305" alt="Website Homepage" src="https://github.com/user-attachments/assets/d2863e5f-97ac-42dc-88d0-53b458516e89" />
 
-In this section add reports and Events is enabled, this section focuses on Local Events, click on L:
+In this section add reports and Events is enabled, this section focuses on Events, click on events:
 
 <img width="2558" height="1305" alt="Local Events" src="https://github.com/user-attachments/assets/d5110f96-3751-4be4-bac3-23b0a873c155" />
 
-The add reports page will be displayed as this:
+The Events will display on this page:
 <img width="2557" height="1265" alt="Adding new report" src="https://github.com/user-attachments/assets/67a4cdb8-1bd1-402d-ab05-7ea80f6e81d0" />
 
 Here the user will be able to add the reports, when a user adds a report a progress bar will display
