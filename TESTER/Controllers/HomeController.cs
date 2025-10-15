@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Http;
+ï»¿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
@@ -10,7 +10,7 @@ namespace TESTER.Controllers
 {
     public class HomeController : Controller
     {
-       //All events displayed
+        //All events in webapp
         private static List<Event> allEvents = new List<Event>
         {
             new Event
@@ -27,7 +27,7 @@ namespace TESTER.Controllers
                 Title = "Cape Town Carnival",
                 Date = new DateTime(2025, 3, 15),
                 Category = "Culture",
-                Description = "A vibrant parade along Green Point Fan Walk, featuring dancers, musicians, and elaborate floats that celebrate Cape Town’s diverse communities and heritage."
+                Description = "A vibrant parade along Green Point Fan Walk, featuring dancers, musicians, and elaborate floats that celebrate Cape Townâ€™s diverse communities and heritage."
             },
             new Event
             {
@@ -67,7 +67,7 @@ namespace TESTER.Controllers
                 Title = "Cape Town International Jazz Festival",
                 Date = new DateTime(2025, 4, 25),
                 Category = "Music",
-                Description = "Africa’s grandest jazz gathering held at the Cape Town International Convention Centre (CTICC), featuring world-renowned and local jazz musicians."
+                Description = "Africaâ€™s grandest jazz gathering held at the Cape Town International Convention Centre (CTICC), featuring world-renowned and local jazz musicians."
             },
             new Event
             {
@@ -99,15 +99,15 @@ namespace TESTER.Controllers
                 Title = "Community Beach Clean-Up",
                 Date = new DateTime(2025, 10, 20),
                 Category = "Environment",
-                Description = "Organised by local volunteers at Muizenberg and Bloubergstrand beaches, this initiative focuses on keeping Cape Town’s coastlines clean and plastic-free."
+                Description = "Organised by local volunteers at Muizenberg and Bloubergstrand beaches, this initiative focuses on keeping Cape Townâ€™s coastlines clean and plastic-free."
             },
             new Event
             {
                 Id = 12,
-                Title = "Heritage Day Celebration at Company’s Garden",
+                Title = "Heritage Day Celebration at Companyâ€™s Garden",
                 Date = new DateTime(2025, 9, 24),
                 Category = "Culture",
-                Description = "An outdoor celebration in Company’s Garden, Cape Town, featuring local cuisine, dance performances, and exhibitions highlighting South Africa’s heritage and unity."
+                Description = "An outdoor celebration in Companyâ€™s Garden, Cape Town, featuring local cuisine, dance performances, and exhibitions highlighting South Africaâ€™s heritage and unity."
             },
             new Event
             {
@@ -134,22 +134,21 @@ namespace TESTER.Controllers
                 Description = "Hosted at the Cape Town Civic Centre, this public meeting invites residents to discuss upcoming infrastructure, housing, and urban development plans."
             }
         };
-//Data Structures used in local events
+
+        //Data Structures used in local events
         private static Stack<Event> recentEvents = new Stack<Event>();
         private static Dictionary<string, List<Event>> eventsByCategory = allEvents.GroupBy(e => e.Category).ToDictionary(g => g.Key, g => g.ToList());
         private static HashSet<string> categories = new HashSet<string>(allEvents.Select(e => e.Category));
         private static Dictionary<string, int> userSearchPatterns = new Dictionary<string, int>();
-
 
         //Data Structures used in Add Report
         private static Stack<ReportModel> recentReports = new Stack<ReportModel>();
         private static Queue<ReportModel> reportQueue = new Queue<ReportModel>();
         private static LinkedList<ReportModel> linkedReports = new LinkedList<ReportModel>();
 
-//homepage
+        //homepage
         public IActionResult Index() => View();
 
-      
         //Local Events section
         public IActionResult LocalEvents(string search, string startDate, string endDate)
         {
@@ -182,13 +181,39 @@ namespace TESTER.Controllers
                     userSearchPatterns[search] = 1;
             }
 
-            // Recommended events
+          
             List<Event> recommended = new List<Event>();
+
+           
             if (userSearchPatterns.Count > 0)
             {
-                string topCategory = userSearchPatterns.OrderByDescending(x => x.Value).First().Key;
+                string topCategory = userSearchPatterns
+                    .OrderByDescending(x => x.Value)
+                    .First().Key;
+
                 if (eventsByCategory.ContainsKey(topCategory))
-                    recommended = eventsByCategory[topCategory];
+                    recommended = eventsByCategory[topCategory]
+                        .Where(e => !recentEvents.Contains(e))
+                        .Take(3)
+                        .ToList();
+            }
+           
+            else if (recentEvents.Count > 0)
+            {
+                var lastViewed = recentEvents.Peek();
+                if (eventsByCategory.ContainsKey(lastViewed.Category))
+                    recommended = eventsByCategory[lastViewed.Category]
+                        .Where(e => e.Id != lastViewed.Id)
+                        .Take(3)
+                        .ToList();
+            }
+        
+            else
+            {
+                recommended = allEvents
+                    .OrderBy(e => e.Date)
+                    .Take(3)
+                    .ToList();
             }
 
             ViewBag.Recommended = recommended;
@@ -210,10 +235,10 @@ namespace TESTER.Controllers
             return View(ev);
         }
 
-     //Add Report Section
+        //Add Report Section
         public IActionResult AddReports()
         {
-            return View(); 
+            return View();
         }
 
         [HttpPost]
@@ -252,15 +277,14 @@ namespace TESTER.Controllers
             reportQueue.Enqueue(report);
             linkedReports.AddLast(report);
 
-            return RedirectToAction("ViewReports"); 
+            return RedirectToAction("ViewReports");
         }
 
-       //iew Report
+        //View Report
         public IActionResult ViewReports()
         {
             ViewBag.Reports = linkedReports;
-            return View(); 
+            return View();
         }
     }
 }
-//---------------eof-----------------------------------------
