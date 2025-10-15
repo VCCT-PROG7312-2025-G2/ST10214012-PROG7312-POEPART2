@@ -36,11 +36,11 @@ In this section add reports and Events is enabled, this section focuses on Event
 <img width="2558" height="1305" alt="Local Events" src="https://github.com/user-attachments/assets/d5110f96-3751-4be4-bac3-23b0a873c155" />
 
 The Events will display on this page:
-<img width="2557" height="1265" alt="Adding new report" src="https://github.com/user-attachments/assets/67a4cdb8-1bd1-402d-ab05-7ea80f6e81d0" />
 
-Here the user will be able to add the reports, when a user adds a report a progress bar will display
-underneath to show how far the report is from uplaoding.
-And pnce uploaded the user will be taken to the view reports page where all reports will be displayed.
+<img width="2558" height="1305" alt="Local Events" src="https://github.com/user-attachments/assets/d5110f96-3751-4be4-bac3-23b0a873c155" />
 
-<img width="2558" height="1266" alt="Reports will display" src="https://github.com/user-attachments/assets/21ec7063-8056-4a3e-974c-5b6d9c7310c6" />
+Here the user will be presented with all events and will be able to filter through them by either category or by date:
+
+<img width="2553" height="1296" alt="Search" src="https://github.com/user-attachments/assets/0942ea74-2584-4ce6-a1d7-cd939047f37c" />
+
 
